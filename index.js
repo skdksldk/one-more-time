@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 const port = 5000
 const bodyParser = require('body-parser')
+const cookieParser = require('cookie-parser')
 
 const config = require('./config/key')
 
@@ -10,6 +11,7 @@ const { User } = require("./models/User")
 app.use(bodyParser.urlencoded({ extended: true }))
 
 app.use(bodyParser.json())
+app.use(cookieParser())
 
 const mongoose = require('mongoose')
 mongoose.connect('mongodb+srv://tnwns1485:1234@cluster0.smu2n.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', {
@@ -34,10 +36,13 @@ app.post('/register', (req, res) => {
 
 })
 
-app.post('/login', (req, res) => {
+app.post('/api/users/login', (req, res) => {
 
+    console.log('ping')
 
     User.findOne({ email: req.body.email }, (err, user) => {
+
+        console.log('user', user)
         if (!user) {
             return res.json({
                 loginSuccess: false,
@@ -51,6 +56,12 @@ app.post('/login', (req, res) => {
 
 
             user.generateToken((err, user) => {
+                if (err) return res.status(400).send(err)
+
+
+                res.cookie("x_auth", user.token)
+                    .status(200)
+                    .json({ loginSuccess: true, userId: user._id })
 
             })
 
