@@ -50,7 +50,8 @@ function LoginPage(props) {
         } >
         <
         form style = {
-            { display: 'flex', flexDirection: 'column' } }
+            { display: 'flex', flexDirection: 'column' }
+        }
         onSubmit = { onSubmitHandler } >
         <
         label > Email < /label> <
@@ -67,8 +68,8 @@ function LoginPage(props) {
         <
         button type = "submit" >
         Login <
-        /button> <
-        /form> <
+        /button>  <
+        /form>  <
         /div>
     )
 }

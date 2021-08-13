@@ -19,8 +19,8 @@ function LandingPage() {
             }
         } >
         <
-        h2 > 시작 페이지 < /h2> <
-        /div>
+        h2 > 시작 페이지 < /h2>  <
+        /div >
     )
 }
 
