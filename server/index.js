@@ -4,6 +4,7 @@ const port = 5000
 const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
 const { auth } = require('./middleware/auth')
+const { User } = require("./models/User")
 
 const config = require('./config/key')
 
@@ -23,7 +24,7 @@ mongoose.connect('mongodb+srv://tnwns1485:1234@cluster0.smu2n.mongodb.net/myFirs
     }).then(() => console.log('MongoDB Connected...'))
     .catch(err => console.log(err))
 
-app.post('/register', (req, res) => {
+app.post('/api/users/register', (req, res) => {
 
 
     const user = new User(req.body)
