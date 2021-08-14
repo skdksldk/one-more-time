@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { registerUser } from '../../../_actions/user_action';
 import Axios from 'axios';
+import { withRouter } from "react-router-dom";
+
 
 function RegisterPage(props) {
     const dispatch = useDispatch();
@@ -64,7 +66,8 @@ function RegisterPage(props) {
         } >
         <
         form style = {
-            { display: 'flex', flexDirection: 'column' } }
+            { display: 'flex', flexDirection: 'column' }
+        }
         onSubmit = { onSubmitHandler } >
         <
         label > Email < /label> <
@@ -99,8 +102,8 @@ function RegisterPage(props) {
         <
         button type = "submit" >
         회원 가입 <
-        /button> <
-        /form> <
+        /button> < /
+        form > <
         /div>
     )
 }
