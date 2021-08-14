@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Axios from 'axios'
 import { useDispatch } from 'react-redux';
 import { loginUser } from '../../../_actions/user_action';
+import { withRouter } from 'react-router-dom';
 
 function LoginPage(props) {
     const dispatch = useDispatch();
@@ -50,8 +51,7 @@ function LoginPage(props) {
         } >
         <
         form style = {
-            { display: 'flex', flexDirection: 'column' }
-        }
+            { display: 'flex', flexDirection: 'column' } }
         onSubmit = { onSubmitHandler } >
         <
         label > Email < /label> <
@@ -68,10 +68,10 @@ function LoginPage(props) {
         <
         button type = "submit" >
         Login <
-        /button>  <
-        /form>  <
+        /button> <
+        /form> <
         /div>
     )
 }
 
-export default LoginPage
+export default withRouter(LoginPage)
